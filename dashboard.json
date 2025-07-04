@@ -1,0 +1,1746 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text",
+              "wrapText": true
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "startTime"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Start Time"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "startCoordinate_latitude"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Start latitude"
+              },
+              {
+                "id": "unit",
+                "value": "degree"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "startCoordinate_longitude"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "degree"
+              },
+              {
+                "id": "displayName",
+                "value": "Start longitude"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flight_id"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Flight ID"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_aircraftLocation_latitude"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "End latitude"
+              },
+              {
+                "id": "unit",
+                "value": "degree"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_aircraftLocation_longitude"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "End longitude"
+              },
+              {
+                "id": "unit",
+                "value": "degree"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "startTime",
+                "custom": false,
+                "name": "startTime",
+                "type": "DateTime64(3)"
+              },
+              {
+                "alias": "flight_id",
+                "custom": false,
+                "name": "flight_id",
+                "type": "String"
+              },
+              {
+                "alias": "startCoordinate_latitude",
+                "custom": false,
+                "name": "startCoordinate_latitude",
+                "type": "Float64"
+              },
+              {
+                "alias": "startCoordinate_longitude",
+                "custom": false,
+                "name": "startCoordinate_longitude",
+                "type": "Float64"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "list",
+            "orderBy": [],
+            "queryType": "table",
+            "table": "flight_summary"
+          },
+          "editorType": "builder",
+          "format": 1,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT startTime, flight_id, startCoordinate_latitude, startCoordinate_longitude FROM \"autrik\".\"flight_summary\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' )",
+          "refId": "A"
+        },
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "flightControllerState_aircraftLocation_latitude",
+                "custom": false,
+                "name": "flightControllerState_aircraftLocation_latitude",
+                "type": "Float64"
+              },
+              {
+                "alias": "flightControllerState_aircraftLocation_longitude",
+                "custom": false,
+                "name": "flightControllerState_aircraftLocation_longitude",
+                "type": "Float64"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 1,
+            "meta": {},
+            "mode": "list",
+            "orderBy": [
+              {
+                "dir": "DESC",
+                "name": "timestamp"
+              }
+            ],
+            "queryType": "table",
+            "table": "flight_info"
+          },
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "bephz3tttb20wa"
+          },
+          "editorType": "builder",
+          "format": 1,
+          "hide": false,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT flightControllerState_aircraftLocation_latitude, flightControllerState_aircraftLocation_longitude FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) ORDER BY timestamp DESC LIMIT 1",
+          "refId": "B"
+        }
+      ],
+      "title": "Flight Summary",
+      "transformations": [
+        {
+          "id": "concatenate",
+          "options": {
+            "frameNameLabel": "frame",
+            "frameNameMode": "drop"
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text",
+              "wrapText": false
+            },
+            "filterable": false,
+            "inspect": false,
+            "minWidth": 100
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "totalTime"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              },
+              {
+                "id": "displayName",
+                "value": "Total flight time"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "maxHeight"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "lengthm"
+              },
+              {
+                "id": "displayName",
+                "value": "Max Height"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "maxHorizontalSpeed"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "velocityms"
+              },
+              {
+                "id": "displayName",
+                "value": "Max Horizontal Speed"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "maxVirticalSpeed"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "velocityms"
+              },
+              {
+                "id": "displayName",
+                "value": "Max Vertical Speed"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "aircraftName"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Aircraft Name"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "platform"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Platform"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "aircraftName",
+                "custom": false,
+                "name": "aircraftName",
+                "type": "String"
+              },
+              {
+                "alias": "platform",
+                "custom": false,
+                "name": "platform",
+                "type": "String"
+              },
+              {
+                "alias": "totalTime",
+                "custom": false,
+                "name": "totalTime",
+                "type": "UInt64"
+              },
+              {
+                "alias": "maxHorizontalSpeed",
+                "custom": false,
+                "name": "maxHorizontalSpeed",
+                "type": "Float64"
+              },
+              {
+                "alias": "maxVirticalSpeed",
+                "custom": false,
+                "name": "maxVirticalSpeed",
+                "type": "Float64"
+              },
+              {
+                "alias": "maxHeight",
+                "custom": false,
+                "name": "maxHeight",
+                "type": "Float64"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "list",
+            "orderBy": [],
+            "queryType": "table",
+            "table": "flight_summary"
+          },
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "bephz3tttb20wa"
+          },
+          "editorType": "builder",
+          "format": 1,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT aircraftName, platform, totalTime, maxHorizontalSpeed, maxVirticalSpeed, maxHeight FROM \"autrik\".\"flight_summary\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' )",
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text",
+              "wrapText": false
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_isFailsafeEnabled"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fail Safe enabled"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "batteryState_chargeRemainingInPercent"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Battery Remaining"
+              },
+              {
+                "id": "unit",
+                "value": "%"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cameraState_remainingSpaceInMB"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Camera space left"
+              },
+              {
+                "id": "unit",
+                "value": "decmbytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cameraState_availableCaptureCount"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Available captures"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_countOfFlights"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "No. of flights"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_cumulativeFlightDistance"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "lengthm"
+              },
+              {
+                "id": "displayName",
+                "value": "Distance covered"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "flightControllerState_isFailsafeEnabled",
+                "custom": false,
+                "name": "flightControllerState_isFailsafeEnabled",
+                "type": "UInt8"
+              },
+              {
+                "alias": "batteryState_chargeRemainingInPercent",
+                "custom": false,
+                "name": "batteryState_chargeRemainingInPercent",
+                "type": "UInt32"
+              },
+              {
+                "alias": "cameraState_remainingSpaceInMB",
+                "custom": false,
+                "name": "cameraState_remainingSpaceInMB",
+                "type": "UInt32"
+              },
+              {
+                "alias": "cameraState_availableCaptureCount",
+                "custom": false,
+                "name": "cameraState_availableCaptureCount",
+                "type": "UInt32"
+              },
+              {
+                "alias": "flightControllerState_countOfFlights",
+                "custom": false,
+                "name": "flightControllerState_countOfFlights",
+                "type": "UInt32"
+              },
+              {
+                "alias": "flightControllerState_cumulativeFlightDistance",
+                "custom": false,
+                "name": "flightControllerState_cumulativeFlightDistance",
+                "type": "Float64"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 1,
+            "meta": {},
+            "mode": "list",
+            "orderBy": [
+              {
+                "dir": "DESC",
+                "name": "timestamp"
+              }
+            ],
+            "queryType": "table",
+            "table": "flight_info"
+          },
+          "editorType": "builder",
+          "format": 1,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT flightControllerState_isFailsafeEnabled, batteryState_chargeRemainingInPercent, cameraState_remainingSpaceInMB, cameraState_availableCaptureCount, flightControllerState_countOfFlights, flightControllerState_cumulativeFlightDistance FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) ORDER BY timestamp DESC LIMIT 1",
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "degree"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_attitude_yaw"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Yaw"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_attitude_roll"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Roll"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_attitude_pitch"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Pitch"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "flightControllerState_attitude_pitch",
+                "custom": false,
+                "name": "flightControllerState_attitude_pitch",
+                "type": "Int64"
+              },
+              {
+                "alias": "flightControllerState_attitude_roll",
+                "custom": false,
+                "name": "flightControllerState_attitude_roll",
+                "type": "Int64"
+              },
+              {
+                "alias": "flightControllerState_attitude_yaw",
+                "custom": false,
+                "name": "flightControllerState_attitude_yaw",
+                "type": "Int64"
+              },
+              {
+                "alias": "timestamp",
+                "hint": "time",
+                "name": "timestamp",
+                "type": "DateTime64(3)"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "aggregate",
+            "orderBy": [
+              {
+                "default": true,
+                "dir": "ASC",
+                "hint": "time",
+                "name": ""
+              }
+            ],
+            "queryType": "timeseries",
+            "table": "flight_info"
+          },
+          "editorType": "builder",
+          "format": 0,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT timestamp as \"time\", flightControllerState_attitude_pitch, flightControllerState_attitude_roll, flightControllerState_attitude_yaw FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) ORDER BY time ASC",
+          "refId": "A"
+        }
+      ],
+      "title": "Pitch, roll and yaw",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "id": 4,
+      "options": {
+        "basemap": {
+          "config": {
+            "server": "streets",
+            "showLabels": true,
+            "theme": "auto"
+          },
+          "name": "Layer 0",
+          "type": "osm-standard"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": true,
+          "showScale": true,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "arrow": 1,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/plane.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "text": {
+                  "field": "time",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "latitude": "flightControllerState_aircraftLocation_latitude",
+              "longitude": "flightControllerState_aircraftLocation_longitude",
+              "mode": "coords"
+            },
+            "name": "Layer 1",
+            "opacity": 1,
+            "tooltip": true,
+            "type": "route"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 52.250434,
+          "lon": 10.867072,
+          "zoom": 16.43
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "flightControllerState_aircraftLocation_latitude",
+                "custom": false,
+                "name": "flightControllerState_aircraftLocation_latitude",
+                "type": "Float64"
+              },
+              {
+                "alias": "flightControllerState_aircraftLocation_longitude",
+                "custom": false,
+                "name": "flightControllerState_aircraftLocation_longitude",
+                "type": "Float64"
+              },
+              {
+                "alias": "timestamp",
+                "hint": "time",
+                "name": "timestamp",
+                "type": "DateTime64(3)"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              },
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flightControllerState_aircraftLocation_latitude",
+                "label": "flightControllerState_aircraftLocation_latitude",
+                "operator": "<=",
+                "type": "Float64",
+                "value": 70
+              },
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flightControllerState_aircraftLocation_latitude",
+                "label": "flightControllerState_aircraftLocation_latitude",
+                "operator": ">=",
+                "type": "Float64",
+                "value": 40
+              },
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flightControllerState_aircraftLocation_longitude",
+                "label": "flightControllerState_aircraftLocation_longitude",
+                "operator": "<=",
+                "type": "Float64",
+                "value": 12
+              },
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flightControllerState_aircraftLocation_longitude",
+                "label": "flightControllerState_aircraftLocation_longitude",
+                "operator": ">=",
+                "type": "Float64",
+                "value": 8
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "aggregate",
+            "orderBy": [],
+            "queryType": "timeseries",
+            "table": "flight_info"
+          },
+          "editorType": "builder",
+          "format": 0,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT timestamp as \"time\", flightControllerState_aircraftLocation_latitude, flightControllerState_aircraftLocation_longitude FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) AND ( flightControllerState_aircraftLocation_latitude <= 70 ) AND ( flightControllerState_aircraftLocation_latitude >= 40 ) AND ( flightControllerState_aircraftLocation_longitude <= 12 ) AND ( flightControllerState_aircraftLocation_longitude >= 8 )",
+          "refId": "A"
+        }
+      ],
+      "title": "Flight Path",
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "flightControllerState_altitude",
+                "custom": false,
+                "name": "flightControllerState_altitude",
+                "type": "Float64"
+              },
+              {
+                "alias": "timestamp",
+                "hint": "time",
+                "name": "timestamp",
+                "type": "DateTime64(3)"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "aggregate",
+            "orderBy": [
+              {
+                "default": true,
+                "dir": "ASC",
+                "hint": "time",
+                "name": ""
+              }
+            ],
+            "queryType": "timeseries",
+            "table": "flight_info"
+          },
+          "editorType": "builder",
+          "format": 0,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT timestamp as \"time\", flightControllerState_altitude FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) ORDER BY time ASC",
+          "refId": "A"
+        }
+      ],
+      "title": "Altitude",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 30
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "batteryState_chargeRemainingInPercent",
+                "custom": false,
+                "name": "batteryState_chargeRemainingInPercent",
+                "type": "UInt32"
+              },
+              {
+                "alias": "timestamp",
+                "hint": "time",
+                "name": "timestamp",
+                "type": "DateTime64(3)"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "aggregate",
+            "orderBy": [
+              {
+                "default": true,
+                "dir": "ASC",
+                "hint": "time",
+                "name": ""
+              }
+            ],
+            "queryType": "timeseries",
+            "table": "flight_info"
+          },
+          "editorType": "builder",
+          "format": 0,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT timestamp as \"time\", batteryState_chargeRemainingInPercent FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) ORDER BY time ASC",
+          "refId": "A"
+        }
+      ],
+      "title": "Battery %age",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-red",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 30
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "batteryState_temperature",
+                "custom": false,
+                "name": "batteryState_temperature",
+                "type": "Float64"
+              },
+              {
+                "alias": "timestamp",
+                "hint": "time",
+                "name": "timestamp",
+                "type": "DateTime64(3)"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "aggregate",
+            "orderBy": [
+              {
+                "default": true,
+                "dir": "ASC",
+                "hint": "time",
+                "name": ""
+              }
+            ],
+            "queryType": "timeseries",
+            "table": "flight_info"
+          },
+          "editorType": "builder",
+          "format": 0,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT timestamp as \"time\", batteryState_temperature FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) ORDER BY time ASC",
+          "refId": "A"
+        }
+      ],
+      "title": "Battery Temperature",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "bephz3tttb20wa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "velocityms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_velocity_velocityX"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Velocity in X"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_velocity_velocityY"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Velocity in Y"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "flightControllerState_velocity_velocityZ"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Velocity in Z"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "builderOptions": {
+            "aggregates": [],
+            "columns": [
+              {
+                "alias": "flightControllerState_velocity_velocityX",
+                "custom": false,
+                "name": "flightControllerState_velocity_velocityX",
+                "type": "Float64"
+              },
+              {
+                "alias": "flightControllerState_velocity_velocityY",
+                "custom": false,
+                "name": "flightControllerState_velocity_velocityY",
+                "type": "Float64"
+              },
+              {
+                "alias": "flightControllerState_velocity_velocityZ",
+                "custom": false,
+                "name": "flightControllerState_velocity_velocityZ",
+                "type": "Float64"
+              },
+              {
+                "alias": "timestamp",
+                "hint": "time",
+                "name": "timestamp",
+                "type": "DateTime64(3)"
+              }
+            ],
+            "database": "autrik",
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "flight_id",
+                "label": "flight_id",
+                "operator": "=",
+                "type": "String",
+                "value": "DJIFlightRecord_2025-05-11_[15-31-39]_results"
+              }
+            ],
+            "groupBy": [],
+            "limit": 0,
+            "meta": {},
+            "mode": "aggregate",
+            "orderBy": [
+              {
+                "default": true,
+                "dir": "ASC",
+                "hint": "time",
+                "name": ""
+              }
+            ],
+            "queryType": "timeseries",
+            "table": "flight_info"
+          },
+          "editorType": "builder",
+          "format": 0,
+          "pluginVersion": "4.10.0",
+          "rawSql": "SELECT timestamp as \"time\", flightControllerState_velocity_velocityX, flightControllerState_velocity_velocityY, flightControllerState_velocity_velocityZ FROM \"autrik\".\"flight_info\" WHERE ( flight_id = 'DJIFlightRecord_2025-05-11_[15-31-39]_results' ) ORDER BY time ASC",
+          "refId": "A"
+        }
+      ],
+      "title": "Velocity",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2025-05-11T13:31:39.559Z",
+    "to": "2025-05-11T13:42:05.259Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Autrik Dashboard",
+  "uid": "a473beb1-5f96-4ee3-a052-e18acf9609ad",
+  "version": 44
+}
