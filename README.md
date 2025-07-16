@@ -2,7 +2,11 @@
 
 ## Overview
 
-This project provides an end-to-end ETL (Extract, Transform, Load) pipeline for processing DJI flight log data, storing it in ClickHouse, and visualizing it with Grafana.
+During my summer internship at Autrik UG in 2025, I worked on building an ETL (Extract, Transform, Load) pipeline to process DJI drone flight logs and turn raw telemetry data into something meaningful and easy to explore. Drones generate tons of data in their proprietary formats, which isn’t straightforward to work with. The goal was to take these raw logs, clean and structure the data, and then visualize it in Grafana so users can track things like altitude, battery usage, speed, and flight paths in an intuitive way.
+
+The pipeline extracts the logs using a shell script that runs the Dockerized parser by DJI Flight Record, transforms them into neat CSV datasets with Python, and loads everything into a ClickHouse database. From there, Grafana dashboards bring it all together visually. Along the way, I ran into a few challenges, like ClickHouse client-server version mismatches and figuring out how to fully containerize the workflow. Since Docker-in-Docker setups caused issues, I switched to orchestrating the stages with a simple shell script, which worked out well in the end.
+
+This was a great learning experience in building data pipelines and visualizations. Huge thanks to the team at **Autrik UG** and to **Mr. Yogesh Khedar** for all their guidance and support throughout the project!
 
 ---
 
